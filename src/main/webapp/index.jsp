@@ -20,7 +20,7 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var r = JSON.parse(this.responseText);
-                    // alert(r.name);
+                    
                     var data = "<h5>Name : " + r.name + "</h5></br>" +
                         "<h5>Country : " + r.country + "</h5></br>" +
                         "<h5>State : " + r.state + "</h5></br>" +
@@ -34,7 +34,6 @@
                 }
             };
             xhttp.open("GET", "http://localhost:8080/find/" + document.getElementById("enteredText").value, true);
-
             xhttp.send();
 
         }
@@ -47,20 +46,14 @@
                     // alert(r.name);
                     var ta=` <table id="table1" border="1px solid black" cellpadding="5px">
                             <tr>
-                                <td>Name</td>
+                                <td onclick="sort()">Name</td>
                                 <td>Phone</td>
                                 <td>Email Address</td>
                             </tr>
                             
                         </table>`;
                         document.getElementById("table2").innerHTML = ta;
-                    for (i in l) {
-
-                        // document.getElementById("data").innerHTML =
-                        //     data;
-                        // if (l[i].id == document.getElementById("enteredText").value) 
-
-                        {
+                    for (i in l) {                        
                             var row = document.getElementById("table1").insertRow();
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
@@ -68,12 +61,8 @@
                             cell1.innerHTML = l[i].name;
                             cell2.innerHTML = l[i].phone;
                             cell3.innerHTML = l[i].email;
-                        }
-                        // var row="<tr><td>"+l[i].name+"</td></tr>";
-                        //    document.getElementById("table2").innerHTML = row;
+                        
                     }
-
-
                 }
             };
             xhttp.open("GET", "http://localhost:8080/add/" + document.getElementById("enteredText").value, true);
@@ -88,8 +77,113 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var l = JSON.parse(this.responseText);
-                    for (i in l) {
+                    var arr=[];
+                    var print=[];                   
+                   var f=0;
+                
+                    for (i in l) {                        
+                            for(j in arr)
+                            {
+                                if(l[i].name==arr[j].name){
+                                    arr[j].count++;
+                                    f=1;  
+                                    break;                                  
+                                }else{
+                                    f=0;
+                                }
+                            }  
+                            if(f==0)
+                            {
+                                arr.push({"name":l[i].name,"count":1});
+                                f=0;
+                            }                         
+                        }                   
+                    
+                        console.log(arr);
+                    for(k in arr){
+                        var count="<h5>Name : " + arr[k].name + "</h5></br>" +
+                        "<h5>Count : " + arr[k].count + "</h5></br>" ;
+                        print.push(count);
+                    }
+                    for(k in print){
+                        
+                        document.getElementById("count").innerHTML = print.join();
+                    }
+                }
+            };
+            xhttp.open("GET", "http://localhost:8080/count", true);
 
+            xhttp.send();
+        }
+
+        function sort(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var l = JSON.parse(this.responseText);
+                    var arr=[];
+                    var print=[];
+                   // console.log(arr);
+                   for(i in l)
+                   {
+                         l.sort(function(a, b){
+                         return a.name - b.name;
+                        });
+                   }
+                   
+                   var ta=` <table id="table1" border="1px solid black" cellpadding="5px">
+                            <tr>
+                                <td onclick="sort()">Name</td>
+                                <td>Phone</td>
+                                <td>Email Address</td>
+                                <td>Sort</td>
+                            </tr>
+                            
+                        </table>`;
+                        document.getElementById("table2").innerHTML = ta;
+                    for (i in l) {                        
+                            var row = document.getElementById("table1").insertRow();
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell1.innerHTML = l[i].name;
+                            cell2.innerHTML = l[i].phone;
+                            cell3.innerHTML = l[i].email;
+                        
+                    }
+                   
+                   
+                   var f=0;
+                    for (i in l) {
+                        
+                            for(j in arr)
+                            {
+                                if(l[i].name==arr[j].name){
+                                    arr[j].count++;
+                                    f=1;  
+                                    break;                                  
+                                }else{
+                                    f=0;
+                                }
+                            }  
+                            if(f==0)
+                            {
+                                arr.push({"name":l[i].name,"count":1});
+                                f=0;
+                            }                         
+                        }                        
+                    
+                        console.log(arr);
+                        arr=arr.sort();
+                    for(k in arr){
+                        var count="<h5>Name : " + arr[k].name + "</h5></br>" +
+                        "<h5>Count : " + arr[k].count + "</h5></br>" ;
+                        print.push(count);
+                    }
+                    print=print.sort();
+                    for(k in print){
+                        
+                        document.getElementById("count").innerHTML = print.join();
                     }
                 }
             };
@@ -116,9 +210,13 @@
         <div id="table2">
 
         </div>
-
+        <br>
         <div>
             <button onclick="count()">Count</button>
+        </div>
+        <br>
+        <div id="count">
+
         </div>
     </div>
 

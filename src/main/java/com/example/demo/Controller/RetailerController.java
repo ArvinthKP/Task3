@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,16 +40,13 @@ public class RetailerController {
 	@GetMapping("/add/{id}")
 	public List<AddedRetailer> add(@PathVariable int id)
 	{
-		Retailer r= retdao.findById(id).get();
-		
-		
-		
+		Retailer r= retdao.findById(id).get();		
 			AddedRetailer ar=new AddedRetailer(r.getName(),Integer.toString(r.getPhone()),r.getEmail());
 			adretdao.save(ar);
 		
 //		System.out.println(ar);
 		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
-		System.out.println(l);
+//		System.out.println(l);
 		return l;	
 		
 		
@@ -58,7 +56,17 @@ public class RetailerController {
 	public List<AddedRetailer> count()
 	{
 		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
-		System.out.println(l);
+//		System.out.println(l);
+		return l;		
+		
+	}
+	
+	@GetMapping("/sort")
+	public List<AddedRetailer> sort()
+	{
+		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
+//		System.out.println(l);
+		
 		return l;		
 		
 	}
