@@ -45,11 +45,22 @@
                 if (this.readyState == 4 && this.status == 200) {
                     var l = JSON.parse(this.responseText);
                     // alert(r.name);
+                    var ta=` <table id="table1" border="1px solid black" cellpadding="5px">
+                            <tr>
+                                <td>Name</td>
+                                <td>Phone</td>
+                                <td>Email Address</td>
+                            </tr>
+                            
+                        </table>`;
+                        document.getElementById("table2").innerHTML = ta;
                     for (i in l) {
 
                         // document.getElementById("data").innerHTML =
                         //     data;
-                        if (l[i].id == document.getElementById("enteredText").value) {
+                        // if (l[i].id == document.getElementById("enteredText").value) 
+
+                        {
                             var row = document.getElementById("table1").insertRow();
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
@@ -58,8 +69,10 @@
                             cell2.innerHTML = l[i].phone;
                             cell3.innerHTML = l[i].email;
                         }
+                        // var row="<tr><td>"+l[i].name+"</td></tr>";
+                        //    document.getElementById("table2").innerHTML = row;
                     }
-                    //    document.getElementById("data").innerHTML = l;
+
 
                 }
             };
@@ -74,9 +87,9 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    var l = JSON.parse(this.responseText);                    
+                    var l = JSON.parse(this.responseText);
                     for (i in l) {
-                        
+
                     }
                 }
             };
@@ -100,14 +113,8 @@
         </div>
         <br>
         <br>
-        <div>
-            <table id="table1" border="1px solid black" cellpadding=5px;>
-                <tr>
-                    <td>Name</td>
-                    <td>Phone</td>
-                    <td>Email Address</td>
-                </tr>
-            </table>
+        <div id="table2">
+
         </div>
 
         <div>

@@ -42,9 +42,11 @@ public class RetailerController {
 		Retailer r= retdao.findById(id).get();
 		
 		
-		AddedRetailer ar=new AddedRetailer(r.getId(),r.getName(),Integer.toString(r.getPhone()),r.getEmail());
-		adretdao.save(ar);
-		System.out.println(ar);
+		
+			AddedRetailer ar=new AddedRetailer(r.getName(),Integer.toString(r.getPhone()),r.getEmail());
+			adretdao.save(ar);
+		
+//		System.out.println(ar);
 		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
 		System.out.println(l);
 		return l;	
