@@ -51,7 +51,10 @@
                                 <td>Email Address</td>
                             </tr>
                             
-                        </table>`;
+                        </table>
+                        <br>
+                        <br>
+                        <button onclick="count()">Count</button>`;
                         document.getElementById("table2").innerHTML = ta;
                     for (i in l) {                        
                             var row = document.getElementById("table1").insertRow();
@@ -123,23 +126,38 @@
                     var l = JSON.parse(this.responseText);
                     var arr=[];
                     var print=[];
+                    var nonSortedArray=l;
+                    
                    // console.log(arr);
-                   for(i in l)
-                   {
-                         l.sort(function(a, b){
-                         return a.name - b.name;
-                        });
-                   }
-                   
+                //    for(i in l)
+                //    {
+                    
+                //    }
+               console.log(l.sort(function(a, b){
+                         if(a.name - b.name)
+                         {
+                            console.log(a.name - b.name);
+                            return 1;
+                         }                         
+                         else
+                         {
+                            console.log(a.name - b.name);
+                            return -1;
+                         }                         
+                        })) ;
+                   console.log(nonSortedArray);
                    var ta=` <table id="table1" border="1px solid black" cellpadding="5px">
                             <tr>
                                 <td onclick="sort()">Name</td>
                                 <td>Phone</td>
                                 <td>Email Address</td>
-                                <td>Sort</td>
+                                
                             </tr>
                             
-                        </table>`;
+                        </table>
+                        <br>
+                        <br>
+                        <button onclick="count()">Count</button>`;
                         document.getElementById("table2").innerHTML = ta;
                     for (i in l) {                        
                             var row = document.getElementById("table1").insertRow();
@@ -211,9 +229,9 @@
 
         </div>
         <br>
-        <div>
+        <!-- <div>
             <button onclick="count()">Count</button>
-        </div>
+        </div> -->
         <br>
         <div id="count">
 
