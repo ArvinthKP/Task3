@@ -114,7 +114,7 @@
                             }
                         }
                         if (f == 0) {
-                            arr.push({ "name": l[i].name, "count": 1 });
+                            arr.push({ "name": l[ii].name, "count": 1 });
                             f = 0;
                         }
                     }
@@ -142,27 +142,20 @@
                 if (this.readyState == 4 && this.status == 200) {
                     var l = JSON.parse(this.responseText);
                     var arr = [];
-                    var print = [];
-                    var nonSortedArray = l;
-
-                    // console.log(arr);
-                    //    for(i in l)
-                    //    {
-
-                    //    }
+                    var print = [];                    
                     console.log(l.sort(function(a, b){
-                         if(a.name - b.name)
+                         if(a.name > b.name)
                          {
-                            console.log(a.name - b.name);
+                            
                             return 1;
                          }                         
                          else
                          {
-                            console.log(a.name - b.name);
+                          
                             return -1;
                          }                         
                         })) ;
-                    console.log(nonSortedArray);
+                    console.log("inside sort");
                     var ta = ` <table id="table1" border="1px solid black" cellpadding="5px">
                             <tr>
                                 <td onclick="sort()">Name</td>
@@ -182,81 +175,21 @@
                     var maximumRecords = 10;
 
                     var counter = 0;
-                    console.log("i= " + i);
-                    var ta = ` <table id="table1" border="1px solid black" cellpadding="5px">
-                            <tr>
-                                <td onclick="sort()">Name</td>
-                                <td>Phone</td>
-                                <td>Email Address</td>
-                                
-                            </tr>
-                            
-                        </table>
-                        <br>
-                        <br>
-                        <button onclick="count()">Count</button>`;
-                    document.getElementById("table2").innerHTML = ta;
-                    for (ii in l) {
-                        var row = document.getElementById("table1").insertRow();
-                        var cell1 = row.insertCell(0);
-                        var cell2 = row.insertCell(1);
-                        var cell3 = row.insertCell(2);
-                        cell1.innerHTML = l[ii].name;
-                        cell2.innerHTML = l[ii].phone;
-                        cell3.innerHTML = l[ii].email;
-
+                    console.log(l);
+                    console.log("i= " + i);  
+                    for (i in l) {                        
+                            var row = document.getElementById("table1").insertRow();
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell1.innerHTML = l[i].name;
+                            cell2.innerHTML = l[i].phone;
+                            cell3.innerHTML = l[i].email;
+                        
                     }
-
-                    // var dummy_i = i;
-                    // for (dummy_i; dummy_i < l.length; dummy_i++) {
-                    // if (counter < 10) {
-
-                    // var row = document.getElementById("table1").insertRow();
-                    // var cell1 = row.insertCell(0);
-                    // var cell2 = row.insertCell(1);
-                    // var cell3 = row.insertCell(2);
-                    // cell1.innerHTML = l[dummy_i].name;
-                    // cell2.innerHTML = l[dummy_i].phone;
-                    // cell3.innerHTML = l[dummy_i].email;
-                    // counter++;
-                    // } 
-                    // else {
-                    //     document.getElementById("table2").innerHTML = ta;
-                    //     counter = 0;
-                    // }
-                // }
-                // counter = 0;
-
-                // var f = 0;
-                // for (ii in l) {
-
-                //     for (j in arr) {
-                //         if (l[ii].name == arr[j].name) {
-                //             arr[j].count++;
-                //             f = 1;
-                //             break;
-                //         } else {
-                //             f = 0;
-                //         }
-                //     }
-                //     if (f == 0) {
-                //         arr.push({ "name": l[i].name, "count": 1 });
-                //         f = 0;
-                //     }
-                // }
-
-                // console.log(arr);
-                // arr = arr.sort();
-                // for (k in arr) {
-                //     var count = "<h5>Name : " + arr[k].name + "</h5></br>" +
-                //         "<h5>Count : " + arr[k].count + "</h5></br>";
-                //     print.push(count);
-                // }
-                // print = print.sort();
-                // for (k in print) {
-
-                //     document.getElementById("count").innerHTML = print.join();
-                // }
+                    counter = 0;                  
+                
+               
             }
         };
         xhttp.open("GET", "http://localhost:8080/count", true);

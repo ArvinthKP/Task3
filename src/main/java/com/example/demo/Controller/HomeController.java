@@ -8,8 +8,8 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String home() {
-		return "index.jsp";
+//		return "index.jsp";
 //		return "pageination_Test.jsp";
-//		return "index_with_pagination.jsp";
+		return "index_with_pagination.jsp";
 	}
 }
