@@ -9,7 +9,17 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <style>
+        p{
+            color: red;
+        }
+        #head{
+            font-weight: bold;            
+        }
+        h3{
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,12 +28,14 @@
         var i = 0;
         var list;
         var tableCreation = `<p>Max Of 10 Records Will Be Displayed Per Table</p>
-                    <table id="table1" border="1px solid black" cellpadding="5px">
-                            <tr>
-                                <td onclick="sort()">Name</td>
+                    <table class="table table-striped" id="table1">
+                            
+                            <tr id="head">
+                                <td onclick="sort()" >Name</td>
                                 <td>Phone</td>
                                 <td>Email Address</td>
-                            </tr>                            
+                            </tr>
+                                                      
                     </table><br>`;
         var noOfButtons;
 
@@ -35,7 +47,8 @@
                 if (this.readyState == 4 && this.status == 200) {
                     var r = JSON.parse(this.responseText);
 
-                    var data = "<h5>Name : " + r.name + "</h5></br>" +
+                    var data = "<h3>Retailer Detail's</h3></br>" + 
+                        "<h5>Name : " + r.name + "</h5></br>" +
                         "<h5>Country : " + r.country + "</h5></br>" +
                         "<h5>State : " + r.state + "</h5></br>" +
                         "<h5>Pincode : " + r.pincode + "</h5></br>" +
@@ -69,7 +82,7 @@
                         tablceCreated = tablceCreated + `<button onclick="pagination(` + i + `)">` + i + `</button>`;
                     }
                     tablceCreated = tablceCreated +
-                        `<br><br><button onclick="count()">Count</button>`;
+                        `<br><br><button class="btn btn-outline-warning" onclick="count()" >Count</button>`;
                     document.getElementById("table2").innerHTML = tablceCreated;
                     document.getElementById("count").innerHTML = "";
                     let counter = 0;
@@ -144,7 +157,7 @@
                 tablceCreated = tablceCreated + `<button onclick="pagination(` + i + `)">` + i + `</button>`;
             }
             tablceCreated = tablceCreated +
-                `<br><br><button onclick="count()">Count</button>`;
+                `<br><br><button class="btn btn-outline-warning" onclick="count()">Count</button>`;
             document.getElementById("table2").innerHTML = tablceCreated;
             let counter = 0;
             for (let i = 0; i < list.length; i++) {
@@ -170,7 +183,7 @@
                 tablceCreated = tablceCreated + `<button onclick="pagination(` + i + `)">` + i + `</button>`;
             }
             tablceCreated = tablceCreated +
-                `<br><br><button onclick="count()">Count</button>`;
+                `<br><br><button class="btn btn-outline-warning" onclick="count()">Count</button>`;
             document.getElementById("table2").innerHTML = tablceCreated;
             for (let i = start; i < end; i++) {
                 var row = document.getElementById("table1").insertRow();
@@ -197,8 +210,8 @@
     <div class="container">
         <div style="margin-top: 40px;">
             <input type="text" id="enteredText" placeholder="Enter Retailer ID">
-            <button onclick="search()">Search</button>
-            <button onclick="add()">Add</button>
+            <button class="btn btn-outline-info" onclick="search()">Search</button>
+            <button class="btn btn-outline-success" onclick="add()">Add</button>
         </div>
         <br>
         <br>
@@ -217,4 +230,5 @@
         </div>
     </div>
 </body>
+
 </html>
