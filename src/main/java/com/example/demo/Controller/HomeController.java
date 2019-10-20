@@ -11,5 +11,6 @@ public class HomeController {
 //		return "index.jsp";
 //		return "pageination_Test.jsp";
 		return "index_with_pagination.jsp";
+//		return "simplified.jsp";
 	}
 }

@@ -1,3 +1,11 @@
 insert into Retailer values('1','xyz','India','xyz@zzz.xom','Arvinth','900','600099','Tamil Nadu');
-insert into Retailer values('2','xyz','India','xyz@zzz.xom','Sai','900','600099','Tamil Nadu');
-insert into Retailer values('3','xyz','India','xyz@zzz.xom','Santy','900','600099','Tamil Nadu');
+insert into Retailer values('2','xyz','India','xyz@zzz.xom','Ajith','900','600099','Tamil Nadu');
+insert into Retailer values('3','xyz','India','xyz@zzz.xom','Sai','900','600099','Tamil Nadu');
+insert into Retailer values('4','xyz','India','xyz@zzz.xom','Santy','900','600099','Tamil Nadu');
+insert into Retailer values('5','xyz','India','xyz@zzz.xom','Monish','900','600099','Tamil Nadu');
+insert into Retailer values('6','xyz','India','xyz@zzz.xom','Surya','900','600099','Tamil Nadu');
+insert into Retailer values('7','xyz','India','xyz@zzz.xom','Sharuk','900','600099','Tamil Nadu');
+insert into Retailer values('8','xyz','India','xyz@zzz.xom','Sunil','900','600099','Tamil Nadu');
+insert into Retailer values('9','xyz','India','xyz@zzz.xom','Bhuvanesh','900','600099','Tamil Nadu');
+insert into Retailer values('10','xyz','India','xyz@zzz.xom','Shankar','900','600099','Tamil Nadu');
+insert into Retailer values('11','xyz','India','xyz@zzz.xom','Keerthi','900','600099','Tamil Nadu');

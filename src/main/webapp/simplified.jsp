@@ -88,7 +88,6 @@
                             counter = 0;
                         }
                     }
-                    counter=0;
                 }
             };
             xhttp.open("GET", "http://localhost:8080/add/" + document.getElementById("enteredText").value, true);
@@ -218,5 +217,4 @@
         </div>
     </div>
 </body>
-
 </html>

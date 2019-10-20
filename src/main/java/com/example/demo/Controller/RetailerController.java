@@ -41,33 +41,17 @@ public class RetailerController {
 	public List<AddedRetailer> add(@PathVariable int id)
 	{
 		Retailer r= retdao.findById(id).get();		
-			AddedRetailer ar=new AddedRetailer(r.getName(),Integer.toString(r.getPhone()),r.getEmail());
-			adretdao.save(ar);
-		
-//		System.out.println(ar);
-		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
-//		System.out.println(l);
-		return l;	
-		
+	    AddedRetailer ar=new AddedRetailer(r.getName(),Integer.toString(r.getPhone()),r.getEmail());
+		adretdao.save(ar);
+		return (List<AddedRetailer>) adretdao.findAll();			
 		
 	}
 	
 	@GetMapping("/count")
 	public List<AddedRetailer> count()
 	{
-		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
-//		System.out.println(l);
-		return l;		
-		
+		return (List<AddedRetailer>) adretdao.findAll();		
 	}
 	
-	@GetMapping("/sort")
-	public List<AddedRetailer> sort()
-	{
-		List<AddedRetailer> l=(List<AddedRetailer>) adretdao.findAll();
-//		System.out.println(l);
-		
-		return l;		
-		
-	}
+	
 }
